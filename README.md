@@ -1,10 +1,7 @@
-# ⚙️ The Chronometric Cipher Gauge
+# ⚙️ The Cipher Gauge
 
 An interactive, clockpunk-themed password strength checker. Type a password into the brass slot and watch a pressure-gauge needle sweep across five forged tiers — from **Raw Ore** to **Masterwork** — while flanking gears spin faster and a steam vent puffs once your cipher is hardened enough.
 
-**[Live demo →](#)** *(replace with your GitHub Pages link once deployed)*
-
-![screenshot placeholder](./assets/screenshot.png)
 
 ## Features
 
@@ -18,11 +15,10 @@ An interactive, clockpunk-themed password strength checker. Type a password into
 ## Project structure
 
 ```
-chronometric-cipher-gauge/
+cipher-gauge/
 ├── index.html      # markup
 ├── style.css        # all styling (brass/wood clockpunk theme)
 ├── script.js         # gear rendering, gauge drawing, password analysis, DOM wiring
-├── assets/           # screenshots / images for the README
 └── README.md
 ```
 
@@ -31,20 +27,13 @@ chronometric-cipher-gauge/
 No build step or dependencies — it's static HTML/CSS/JS.
 
 ```bash
-git clone https://github.com/<your-username>/chronometric-cipher-gauge.git
-cd chronometric-cipher-gauge
+git clone https://github.com/shresth637/cipher-gauge.git
+cd cipher-gauge
 # open index.html directly, or serve it:
 python3 -m http.server 8000
 ```
 
 Then visit `http://localhost:8000`.
-
-## Deploying to GitHub Pages
-
-1. Push this repo to GitHub.
-2. Go to **Settings → Pages**.
-3. Under **Build and deployment**, set **Source** to `Deploy from a branch`, branch `main`, folder `/ (root)`.
-4. Save — your site will be live at `https://<your-username>.github.io/chronometric-cipher-gauge/` within a minute or two.
 
 ## How strength is scored
 
@@ -58,6 +47,3 @@ This is a heuristic, client-side estimate meant for a fun/educational UI — not
 
 Entropy is estimated as `length × log2(charset size)`, and the displayed "time to breach" assumes 10 billion guesses/second (a fast offline attack) — purely illustrative, not a guarantee.
 
-## License
-
-MIT — see [LICENSE](./LICENSE).
