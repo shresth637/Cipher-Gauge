@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Chronometric Cipher Gauge</title>
+<meta name="description" content="An interactive, clockpunk-themed password strength checker. All analysis happens locally in your browser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cinzel+Decorative:wght@700;900&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="frame">
+  <div class="rivet tl"></div><div class="rivet tr"></div>
+  <div class="rivet bl"></div><div class="rivet br"></div>
+
+  <div class="plaque">
+    <h1>The Chronometric Cipher Gauge</h1>
+    <p class="subtitle">An Instrument for Measuring the Fortitude of Your Secret Word</p>
+    <hr>
+  </div>
+
+  <div class="workshop">
+
+    <div class="gauge-housing">
+      <svg class="gear-deco" id="gearLeft" viewBox="0 0 100 100"></svg>
+      <svg class="gear-deco" id="gearRight" viewBox="0 0 100 100"></svg>
+      <svg class="gear-deco" id="gearTiny" viewBox="0 0 100 100"></svg>
+
+      <svg class="gauge-svg" viewBox="0 0 300 190" id="gaugeSvg">
+        <defs>
+          <radialGradient id="hubGrad" cx="35%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#e9c876"/>
+            <stop offset="55%" stop-color="#b98f3f"/>
+            <stop offset="100%" stop-color="#6a4e1f"/>
+          </radialGradient>
+          <linearGradient id="dialFace" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2a2015"/>
+            <stop offset="100%" stop-color="#14100b"/>
+          </linearGradient>
+        </defs>
+
+        <!-- outer housing ring -->
+        <circle cx="150" cy="160" r="142" fill="none" stroke="#5a4526" stroke-width="3" opacity="0.5"/>
+        <path d="M14,160 A136,136 0 0 1 286,160" fill="none" stroke="#4a3a22" stroke-width="10" stroke-linecap="round" opacity="0.4"/>
+
+        <!-- dial backing -->
+        <path d="M18,162 A132,132 0 0 1 282,162 L282,180 L18,180 Z" fill="url(#dialFace)"/>
+
+        <!-- colored strength bands -->
+        <g id="bands" stroke="#0d0906" stroke-width="1.5"></g>
+
+        <!-- tick marks + roman numerals -->
+        <g id="ticks"></g>
+
+        <!-- needle -->
+        <g class="needle" id="needle">
+          <polygon points="150,45 154,158 146,158" fill="#a8352a"/>
+          <polygon points="150,158 158,172 142,172" fill="#7a2620"/>
+        </g>
+
+        <!-- hub -->
+        <circle cx="150" cy="160" r="11" fill="url(#hubGrad)" stroke="#3a2c15" stroke-width="1.5"/>
+        <circle cx="150" cy="160" r="3" fill="#3a2c15"/>
+
+        <!-- steam vent -->
+        <g id="steamVent" class="steam-vent" transform="translate(255,150)">
+          <rect x="-4" y="0" width="8" height="10" rx="2" fill="#5a4526"/>
+          <circle class="puff" cx="0" cy="-2" r="4" fill="#cfd8d2"/>
+          <circle class="puff" cx="2" cy="-2" r="3.2" fill="#cfd8d2"/>
+          <circle class="puff" cx="-2" cy="-2" r="3.6" fill="#cfd8d2"/>
+        </g>
+      </svg>
+
+      <div class="level-readout">
+        <div class="level-word" id="levelWord">AWAITING CIPHER</div>
+        <div class="level-tagline" id="levelTagline">Turn the key. Set the mechanism in motion.</div>
+      </div>
+    </div>
+
+    <div class="readout-strip">
+      <div class="readout-box">
+        <div class="rb-label">Entropy</div>
+        <div class="rb-value" id="entropyVal">0 bits</div>
+      </div>
+      <div class="readout-box">
+        <div class="rb-label">Time to Breach</div>
+        <div class="rb-value" id="crackVal">—</div>
+      </div>
+    </div>
+
+    <div class="input-panel">
+      <label for="pwInput">Inscribe Your Cipher Here</label>
+      <div class="slot">
+        <input type="password" id="pwInput" placeholder="············" autocomplete="off" spellcheck="false">
+        <button class="lever-btn" id="toggleBtn" title="Reveal cipher" aria-label="Toggle password visibility">◉</button>
+      </div>
+    </div>
+
+    <div class="checklist" id="checklist">
+      <div class="tag" data-key="len"><span class="stamp">✕</span>12+ characters</div>
+      <div class="tag" data-key="up"><span class="stamp">✕</span>upper case</div>
+      <div class="tag" data-key="low"><span class="stamp">✕</span>lower case</div>
+      <div class="tag" data-key="num"><span class="stamp">✕</span>a numeral</div>
+      <div class="tag" data-key="sym"><span class="stamp">✕</span>a symbol</div>
+      <div class="tag" data-key="common"><span class="stamp">✕</span>not a known word</div>
+    </div>
+
+  </div>
+
+  <p class="footnote">The gauge's needle, gears, and steam are decorative theatre — no cipher ever leaves this workshop.</p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
