@@ -15,7 +15,7 @@ An interactive, clockpunk-themed password strength checker. Type a password into
 ## Project structure
 
 ```
-cipher-gauge/
+Cipher-Gauge/
 ├── index.html      # markup
 ├── style.css        # all styling (brass/wood clockpunk theme)
 ├── script.js         # gear rendering, gauge drawing, password analysis, DOM wiring
@@ -27,8 +27,8 @@ cipher-gauge/
 No build step or dependencies — it's static HTML/CSS/JS.
 
 ```bash
-git clone https://github.com/shresth637/cipher-gauge.git
-cd cipher-gauge
+git clone https://github.com/shresth637/Cipher-Gauge.git
+cd Cipher-Gauge
 # open index.html directly, or serve it:
 python3 -m http.server 8000
 ```
